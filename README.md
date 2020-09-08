@@ -38,7 +38,7 @@ Latinizer.t('Ру́сский язы́к один из восточнослав�
  => "Rússkij qzýk odin iz wostochnoslawqnskih qzykow, nacional'nyj qzyk russkogo naroda."
 ```
 
-Use option `:ascii` for ascii only output:
+Use option `:ascii` for ascii only output. This will remove tones in Chinese, and force ITRANS romanization on Bhramic scripts:
 ```
 Latinizer.t('漢語，又稱中文、唐話、華語为整个汉语族，', :ascii)
  => "han yu  you cheng zhong wen  tang hua  hua yu wei zheng ge han yu zu"
