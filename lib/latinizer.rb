@@ -15,6 +15,8 @@ class Latinizer
     if opt == :ascii
       indic_options = :itrans
       pinyin_options = {}
+    elsif opt == :ja
+      return romanize_japanese(text)
     end
 
     if scripts.size == 1

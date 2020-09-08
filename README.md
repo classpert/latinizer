@@ -4,11 +4,11 @@ A simple general latinization / romanization / transliteration gem.
 Basically a wrapper for more specific gems. It uses unicode/scripts to detect the script present in the string and then calls a more specific romanization gem.
 
 The romanization of the following  scripts is currently supported:
-- Chinese Characters with the gem [ChinesePinyin](https://github.com/flyerhzm/chinese_pinyin)
+- Chinese Characters, with the gem [ChinesePinyin](https://github.com/flyerhzm/chinese_pinyin)
 - Arabic, with a conversion table based on [URoman](https://github.com/isi-nlp/uroman)
 - Devanagari, Ghurmukhi, Gujarati, Malayalam, Telugu and Tamil with the gem [Sanscript](https://github.com/ubcsanskrit/sanscript.rb). Since Sanscript is optmized for Sanskrit, southern Bhramic script support may be incomplete
-- Cyrillic with the gem [Translit](https://github.com/tjbladez/translit)
-- Japanese wit the gems [Romaji](https://github.com/makimoto/romaji) and [Mecab Standalone](https://github.com/wyugue/mecab_standalone) (a Ruby wrapper for Mecab). Mecab is also used to ensure correct kanji readings and tokenization.
+- Cyrillic, with the gem [Translit](https://github.com/tjbladez/translit)
+- Japanese, with the gems [Romaji](https://github.com/makimoto/romaji) and [Mecab Standalone](https://github.com/wyugue/mecab_standalone) (a Ruby wrapper for Mecab). Mecab is also used to ensure correct kanji readings and tokenization.
 
 ## Installation
 ```
@@ -46,6 +46,16 @@ Latinizer.t('漢語，又稱中文、唐話、華語为整个汉语族，', :asc
 Latinizer.t('हिन्दी विश्व की एक प्रमुख भाषा है एवं भारत की राजभाषा है', :ascii)
  => "hindI vishva kI eka pramukha bhAShA hai evaM bhArata kI rAjabhAShA hai"
 ```
+
+Use option `:ja` to force Japanese romanization on kanji-only strings
+
+```
+Latinizer.t('日本語')
+ => "rì běn yǔ"
+
+Latinizer.t('日本語', :ja)
+ => "nihongo"
+``
 
 ## License
 
