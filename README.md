@@ -55,7 +55,7 @@ Latinizer.t('日本語')
 
 Latinizer.t('日本語', :ja)
  => "nihongo"
-``
+```
 
 ## License
 
