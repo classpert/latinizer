@@ -4,23 +4,26 @@ A simple general latinization / romanization / transliteration gem.
 Basically a wrapper for more specific gems. It uses unicode/scripts to detect the script present in the string and then calls a more specific romanization gem.
 
 The romanization of the following  scripts is currently supported:
-- Chinese Characters with the gem Chinese Pinyin
-- Arabic, with a conversion table based on URoman
-- Devanagari, Ghurmukhi, Gujarati, Malayalam, Telugu and Tamil with the gem Sanscript. Since Sanscript is optmized for Sanskrit, southern Bhramic script support may be incomplete
-- Cyrillic with the gem Translit
-- Japanese wit the gems Romani and Mecab Standalone (a Ruby wrapper for Mecab). Mecab is also used to ensure correct kanji readings and tokenization.
+- Chinese Characters with the gem [ChinesePinyin](https://github.com/flyerhzm/chinese_pinyin)
+- Arabic, with a conversion table based on [URoman](https://github.com/isi-nlp/uroman)
+- Devanagari, Ghurmukhi, Gujarati, Malayalam, Telugu and Tamil with the gem [Sanscript](https://github.com/ubcsanskrit/sanscript.rb). Since Sanscript is optmized for Sanskrit, southern Bhramic script support may be incomplete
+- Cyrillic with the gem [Translit](https://github.com/tjbladez/translit)
+- Japanese wit the gems [Romaji](https://github.com/makimoto/romaji) and [Mecab Standalone](https://github.com/wyugue/mecab_standalone) (a Ruby wrapper for Mecab). Mecab is also used to ensure correct kanji readings and tokenization.
 
 ## Installation
 ```
 gem install latinizer
 ```
 
+Due to Mecab Standalone, this gem might not work in all environments.
+
+
 ## Usage
 ```
 require 'latinizer'
 
-Latinizer.t('漢語，又稱中文、唐話、華語为整个汉语族，或者其语族里的一种语言——汉语族为东亚分析语的一支家族')
- => "hàn yǔ  yòu chēng zhōng wén  táng huà  huá yǔ wèi zhěng gè hàn yǔ zú  huò zhě qí yǔ zú lǐ de yī zhǒng yǔ yán  hàn yǔ zú wèi dōng yà fēn xī yǔ de yī zhī jiā zú"
+Latinizer.t('漢語，又稱中文、唐話、華語为整个汉语族，')
+ => "hàn yǔ  yòu chēng zhōng wén  táng huà  huá yǔ wèi zhěng gè hàn yǔ zú"
 
 Latinizer.t('اللُّغَة العَرَبِيّة هي أكثر اللغات السامية تحدثاً')
  => "allughaa al'arabiya hy akthr allghat alsamya thdtha"
@@ -28,13 +31,24 @@ Latinizer.t('اللُّغَة العَرَبِيّة هي أكثر اللغات 
 Latinizer.t('हिन्दी विश्व की एक प्रमुख भाषा है एवं भारत की राजभाषा है')
  => "hindī viśva kī eka pramukha bhāṣā hai evaṃ bhārata kī rājabhāṣā hai"
 
-Latinizer.t('日本国、または日本は、東アジアに位置し、日本列島および南西諸島・伊豆諸島・小笠原諸島などからなる民主制国家')
- => "nippon koku 、 mataha nippon ha 、 higashiajia ni ichi shi 、 nippon rettou oyobi nanseishotou ・ izushotou ・ ogasawarashotou nado kara naru minshu sei kokka"
+Latinizer.t('平仮名は、日本語の表記に用いられる音節文字')
+ => "hiragana ha, nihongo no hyouki ni mochii rareru onsetsu moji"
 
-Latinizer.t('Старославянская (древнеболгарская) азбука: то же, что кирилли́ческий (или кири́лловский) алфави́т: один из двух (наряду с глаголицей) древних алфавитов для старославянского языка;')
- => "Staroslawqnskaq (drewnebolgarskaq) azbuka: to zhe, chto kirillícheskij (ili kiríllowskij) alfawít: odin iz dwuh (narqdu s glagolicej) drewnih alfawitow dlq staroslawqnskogo qzyka;"
+Latinizer.t('Ру́сский язы́к один из восточнославянских языков, национальный язык русского народа.')
+ => "Rússkij qzýk odin iz wostochnoslawqnskih qzykow, nacional'nyj qzyk russkogo naroda."
 ```
 
+Use option `:ascii` for ascii only output:
+```
+Latinizer.t('漢語，又稱中文、唐話、華語为整个汉语族，', :ascii)
+ => "han yu  you cheng zhong wen  tang hua  hua yu wei zheng ge han yu zu"
 
+Latinizer.t('हिन्दी विश्व की एक प्रमुख भाषा है एवं भारत की राजभाषा है', :ascii)
+ => "hindI vishva kI eka pramukha bhAShA hai evaM bhArata kI rAjabhAShA hai"
+```
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
 This project uses the universal romanizer software 'uroman' written by Ulf Hermjakob, USC Information Sciences Institute (2015-2020)
