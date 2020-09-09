@@ -1,7 +1,0 @@
-gem 'chinese_pinyin'
-gem 'mecab_standalone', '>=0.1.2'
-gem 'romaji'
-gem 'sanscript'
-gem 'translit'
-gem 'unicode/scripts'
-gem 'babosa'
