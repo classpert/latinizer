@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'latinizer'
-  s.version     = '0.1.4'
-  s.date        = '2020-09-08'
+  s.version     = '0.2.0'
+  s.date        = '2020-09-09'
   s.summary     = 'latinizer'
   s.description = 'A simple general latinization / romanization / transliteration gem wrapping Mecab, Chinese Pinyin and other more specific romanization gems'
   s.authors     = ['William Yugue']

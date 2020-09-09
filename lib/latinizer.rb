@@ -35,6 +35,11 @@ class Latinizer
     text
   end
 
+  def self.has_non_latin?(text)
+    scripts = Unicode::Scripts.scripts(text) - ['Common', 'Inherited', 'Latin']
+    scripts.size > 0 ? true : false
+  end
+
   def self.is_japanese?(scripts) #fix only kana text
     (scripts.include?('Han') && (scripts.include?('Hiragana') || scripts.include?('Katakana'))) ||
     (scripts.include?('Hiragana') || scripts.include?('Katakana'))
