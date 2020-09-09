@@ -2,18 +2,15 @@ class Latinizer
   require 'chinese_pinyin'
   require 'mecab_standalone'
   require 'romaji'
-  require 'sanscript'
   require 'translit'
   require 'unicode/scripts'
   require 'babosa'
 
   def self.t(text, opt = nil)
     scripts = Unicode::Scripts.scripts(text) - ['Common', 'Inherited', 'Latin']
-    indic_options = :iast
     pinyin_options = {tonemarks: true}
 
     if opt == :ascii
-      indic_options = :itrans
       pinyin_options = {}
     elsif opt == :ja
       return romanize_japanese(text)
@@ -26,18 +23,6 @@ class Latinizer
       when 'Cyrillic'
         latinized = Translit.convert(text, :english)
         return opt == :ascii ? latinized.to_slug.to_ascii.to_s : latinized
-      when 'Devanagari'
-        return Sanscript.transliterate(text, :devanagari, indic_options)
-      when 'Malayalam'
-        return Sanscript.transliterate(text, :malayalam, indic_options)
-      when 'Tamil'
-        return Sanscript.transliterate(text, :tamil, indic_options)
-      when 'Telugu'
-        return Sanscript.transliterate(text, :telugu, indic_options)
-      when 'Gurmukhi'
-        return Sanscript.transliterate(text, :gurmukhi, indic_options)
-      when 'Gujarati'
-        return Sanscript.transliterate(text, :gujarati, indic_options)
       when 'Han'
         return Pinyin.t(text, pinyin_options)
       end

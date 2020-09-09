@@ -6,7 +6,6 @@ Basically a wrapper for more specific gems. It uses unicode/scripts to detect th
 The romanization of the following  scripts is currently supported:
 - Chinese Characters, with the gem [ChinesePinyin](https://github.com/flyerhzm/chinese_pinyin)
 - Arabic, with a conversion table based on [URoman](https://github.com/isi-nlp/uroman)
-- Devanagari, Ghurmukhi, Gujarati, Malayalam, Telugu and Tamil with the gem [Sanscript](https://github.com/ubcsanskrit/sanscript.rb). Since Sanscript is optmized for Sanskrit, southern Bhramic script support may be incomplete
 - Cyrillic, with the gem [Translit](https://github.com/tjbladez/translit)
 - Japanese, with the gems [Romaji](https://github.com/makimoto/romaji) and [Mecab Standalone](https://github.com/wyugue/mecab_standalone) (a Ruby wrapper for Mecab). Mecab is also used to ensure correct kanji readings and tokenization.
 
@@ -28,9 +27,6 @@ Latinizer.t('漢語，又稱中文、唐話、華語为整个汉语族，')
 Latinizer.t('اللُّغَة العَرَبِيّة هي أكثر اللغات السامية تحدثاً')
  => "allughaa al'arabiya hy akthr allghat alsamya thdtha"
 
-Latinizer.t('हिन्दी विश्व की एक प्रमुख भाषा है एवं भारत की राजभाषा है')
- => "hindī viśva kī eka pramukha bhāṣā hai evaṃ bhārata kī rājabhāṣā hai"
-
 Latinizer.t('平仮名は、日本語の表記に用いられる音節文字')
  => "hiragana ha, nihongo no hyouki ni mochii rareru onsetsu moji"
 
@@ -38,13 +34,10 @@ Latinizer.t('Ру́сский язы́к один из восточнослав�
  => "Rússkij qzýk odin iz wostochnoslawqnskih qzykow, nacional'nyj qzyk russkogo naroda."
 ```
 
-Use option `:ascii` for ascii only output. This will remove tones in Chinese, and force ITRANS romanization on Bhramic scripts:
+Use option `:ascii` for ascii only output. This will remove tones in Chinese:
 ```
 Latinizer.t('漢語，又稱中文、唐話、華語为整个汉语族，', :ascii)
  => "han yu  you cheng zhong wen  tang hua  hua yu wei zheng ge han yu zu"
-
-Latinizer.t('हिन्दी विश्व की एक प्रमुख भाषा है एवं भारत की राजभाषा है', :ascii)
- => "hindI vishva kI eka pramukha bhAShA hai evaM bhArata kI rAjabhAShA hai"
 ```
 
 Use option `:ja` to force Japanese romanization on kanji-only strings
