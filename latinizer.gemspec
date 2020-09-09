@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'latinizer'
-  s.version     = '0.1.2'
+  s.version     = '0.1.3'
   s.date        = '2020-09-08'
   s.summary     = 'latinizer'
   s.description = 'A simple general latinization / romanization / transliteration gem wrapping Mecab, Sanscript, Chinese Pinyin and other more specific romanization gems'
@@ -15,6 +15,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'romaji'
   s.add_runtime_dependency 'sanscript'
   s.add_runtime_dependency 'translit'
-  s.add_runtime_dependency 'unicode/scripts'
+  s.add_runtime_dependency 'unicode-scripts'
   s.add_runtime_dependency 'babosa'
 end
