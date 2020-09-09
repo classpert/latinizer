@@ -264,7 +264,7 @@ class Latinizer
     .gsub('ۼ','gh') # ARABIC LETTER GHAIN WITH DOT BELOW
     .gsub('۽','&') # ARABIC SIGN SINDHI AMPERSAND
     .gsub('ﷲ','Allah') # ARABIC LIGATURE ALLAH ISOLATED FORM
-    .gsub('و','w ') # Arabic letter waw  ::t-alt o, u  ::lcode ara
+    .gsub('و','w') # Arabic letter waw
     .gsub('ء',"'") # hamza
     .gsub('ٔ',"'") # hamza above
     .gsub('ٕ',"'") # hamza below
@@ -287,8 +287,8 @@ class Latinizer
     .gsub('ِ','i') # kasra ("-i")
     .gsub('ْ','') # sukun (no vowel)
     .gsub('ۡ','') # comment small high dotless head of khah; like sukun (no vowel); used in Kashmiri, Assamese
-    .gsub('اً','an') # fathatan ("-an")
-    .gsub('ً','') # alef + fathatan
+    .gsub('اً','an') # alef + fathatan
+    .gsub('ً','') # fathatan ("-an")
     .gsub('ٌ','') # dammatan ("-un")
     .gsub('ٍ','') # kasratan ("-in")
     .gsub('ّ','') # shadda (consonant doubler)
