@@ -35,14 +35,12 @@ Latinizer.t('Ру́сский язы́к один из восточнослав�
 
 Latinizer.t('漢語, العَرَبِيّة, Ру́сский, Português, Español')
  => " hàn yǔ, al'arabiya, Rússkij, Português, Español"
-
 ```
 
 Scripts that are not available are kept
 ```
 Latinizer.t('漢語, العَرَبِيّة, Ру́сский, Português, Español, ଓଡ଼ିଆ')
  => " hàn yǔ, al'arabiya, Rússkij, Português, Español, ଓଡ଼ିଆ"
-
 ```
 
 

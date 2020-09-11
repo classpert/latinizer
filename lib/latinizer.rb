@@ -1,9 +1,9 @@
 class Latinizer
-  require 'chinese_pinyin'
   require 'translit'
   require 'unicode/scripts'
   require 'babosa'
   require_relative './lib/arabic.rb'
+  require_relative './lib/han.rb'
   require_relative './lib/japanese.rb'
 
   SUPPORTED_SCRIPTS = [
@@ -35,27 +35,11 @@ class Latinizer
       latinized = Translit.convert(text, :english)
       return opt == :ascii ? remove_diacritics(latinized) : latinized
     when 'Han'
-      return  convert_to_pinyin(text, opt)
+      return  Han.t(text, opt)
     when 'Japanese'
       return Japanese.t(text)
     end
     text
-  end
-
-  def self.convert_to_pinyin(string, opt = nil)
-    result = []
-    chars = string.split("")
-    chars.each_with_index do |char, index|
-      if char =~ /\p{Han}/
-        converted_char = Pinyin.t(char, opt == :ascii ? {} : {tonemarks: true})
-        result << ' '
-        result << converted_char
-      else
-        result << char
-      end
-
-    end
-    result.join('').gsub('  ', ' ')
   end
 
   def self.detect_non_latin_scripts(text)
