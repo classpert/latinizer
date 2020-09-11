@@ -11,7 +11,7 @@ class Latinizer
     'Cyrillic',
     'Han',
     'Japanese'
-  ]
+  ].freeze
 
   def self.t(text, opt = nil)
     scripts = detect_non_latin_scripts(text)
@@ -48,7 +48,7 @@ class Latinizer
       scripts -= ['Han', 'Hiragana', 'Katakana']
       scripts += ['Japanese']
     end
-    scripts.intersection(SUPPORTED_SCRIPTS)
+    scripts & SUPPORTED_SCRIPTS
   end
 
   def self.remove_diacritics(text)
