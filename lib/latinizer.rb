@@ -19,10 +19,10 @@ class Latinizer
     puts scripts
 
     if scripts.size == 0
-      return opt == :ascii ? remove_non_ascii(text) : text #fail
+      return opt == :ascii ? remove_non_ascii(text) : text
     elsif scripts.size > 1
       latinized = latinize_script(text, scripts.first, opt)
-      return t(latinized, opt) #forcing ascii because both Pinyin and Mecab do not go well with Translit normal output
+      return t(latinized, opt)
     end
 
     latinized = latinize_script(text, scripts.first, opt)
@@ -40,7 +40,6 @@ class Latinizer
       return opt == :ascii ? remove_diacritics(latinized) : latinized
     when 'Han'
       return  convert_to_pinyin(text, opt)
-      # return PinYin.sentence(text, opt == :ascii ? :ascii : :unicode)
     when 'Japanese'
       return Japanese.t(text)
     end
