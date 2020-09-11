@@ -4,7 +4,6 @@ class Latinizer
   require 'unicode/scripts'
   require 'babosa'
   require_relative './lib/arabic.rb'
-  require_relative './lib/ascii.rb'
   require_relative './lib/japanese.rb'
 
   SUPPORTED_SCRIPTS = [
@@ -16,7 +15,6 @@ class Latinizer
 
   def self.t(text, opt = nil)
     scripts = detect_non_latin_scripts(text)
-    puts scripts
 
     if scripts.size == 0
       return opt == :ascii ? remove_non_ascii(text) : text
@@ -30,8 +28,6 @@ class Latinizer
   end
 
   def self.latinize_script(text, script, opt = nil)
-    puts text
-
     case script
     when 'Arabic'
       return Arabic.t(text)

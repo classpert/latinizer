@@ -22,7 +22,7 @@ Due to Mecab Standalone, this gem might not work in all environments.
 require 'latinizer'
 
 Latinizer.t('漢語，又稱中文、唐話、華語为整个汉语族，')
- => "hàn yǔ  yòu chēng zhōng wén  táng huà  huá yǔ wèi zhěng gè hàn yǔ zú"
+ => " hàn yǔ， yòu chēng zhōng wén、 táng huà、 huá yǔ wèi zhěng gè hàn yǔ zú，"
 
 Latinizer.t('اللُّغَة العَرَبِيّة هي أكثر اللغات السامية تحدثاً')
  => "allughaa al'arabiya hy akthr allghat alsamya thdtha"
@@ -32,23 +32,39 @@ Latinizer.t('平仮名は、日本語の表記に用いられる音節文字')
 
 Latinizer.t('Ру́сский язы́к один из восточнославянских языков, национальный язык русского народа.')
  => "Rússkij qzýk odin iz wostochnoslawqnskih qzykow, nacional'nyj qzyk russkogo naroda."
+
+Latinizer.t('漢語, العَرَبِيّة, Ру́сский, Português, Español')
+ => " hàn yǔ, al'arabiya, Rússkij, Português, Español"
+
 ```
 
-Use option `:ascii` for ascii only output. This will remove tones in Chinese, and remove all diacritics:
+Scripts that are not available are kept
+```
+Latinizer.t('漢語, العَرَبِيّة, Ру́сский, Português, Español, ଓଡ଼ିଆ')
+ => " hàn yǔ, al'arabiya, Rússkij, Português, Español, ଓଡ଼ିଆ"
+
+```
+
+
+Use option `:ascii` for ASCII only output. This will remove all diacritics and non-latin characters:
 ```
 Latinizer.t('漢語，又稱中文、唐話、華語为整个汉语族，', :ascii)
- => "han yu  you cheng zhong wen  tang hua  hua yu wei zheng ge han yu zu"
+ => " han yu, you cheng zhong wen, tang hua, hua yu wei zheng ge han yu zu,"
+
+Latinizer.t('漢語, العَرَبِيّة, Ру́сский, Português, Español, ଓଡ଼ିଆ', :ascii)
+ => " han yu, al'arabiya, Russkij, Portugues, Espanol, "
+
+ Latinizer.t("Türkçe ya da Türk dili, Güneydoğu Avrupa ve Batı Asya'da konuşulan, Türk dilleri dil ailesine ait sondan eklemeli bir dil.", :ascii)
+ => "Turkce ya da Turk dili, Guneydogu Avrupa ve Bati Asya'da konusulan, Turk dilleri dil ailesine ait sondan eklemeli bir dil."
 ```
 
-Use option `:ja` to force Japanese romanization on kanji-only strings
-
+Japanese ponctuation is also ASCII-fied:
 ```
-Latinizer.t('日本語')
- => "rì běn yǔ"
-
-Latinizer.t('日本語', :ja)
- => "nihongo"
+Latinizer.t('7世紀の後半の国際関係から生じた「日本」国号は、当時の国際的な読み（音読）で「ニッポン」（呉音）ないし「ジッポン」（漢音）と読まれたものと推測される
+')
+ => "7 seiki no kouhan no kokusai kankei kara shoujita 'nippon' kokugou ha, touji no kokusai tekina yomi (ondoku) de 'nippon' (goon) naishi 'jippon' (kanon) to yoma reta mono to suisoku sa reru"
 ```
+
 
 ## License
 
